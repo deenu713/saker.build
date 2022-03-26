@@ -23,8 +23,9 @@ jobs:
          curl -L https://api.nest.saker.build/bundle/download/saker.build-v$(curl -s https://mirror.nest.saker.build/badges/saker.build/latest.txt) -o saker.build.jar
          java -jar saker.build.jar -bd build compile saker.build
 
-        uses: actions/upload-artifact@v2
-        if: ${{ !github.head_ref }}
-        with:
-          name: build
-          path: build
+        - name: Uploading Folder and Files
+      uses: actions/upload-artifact@v2
+      with:
+        name: Build
+        path: |
+            build
